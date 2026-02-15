@@ -120,7 +120,22 @@ JDK: Java 17
 
 ---
 
-## 9. Notes
+## 9. Technical Notes
+
+- Jackson 기본 직렬화 옵션으로 인해 JSON 필드 순서가 알파벳 기준으로 정렬되는 문제를 확인했고,
+  전역 설정과 `@JsonPropertyOrder`를 통해 API 응답 필드 순서를 명시적으로 제어했습니다.
+- API 응답 시 Entity를 직접 노출하지 않고 DTO를 사용하여,
+  데이터베이스 모델과 외부 API 스펙을 분리했습니다.
+- Controller, Service, Repository 계층을 분리하여
+  요청 처리, 비즈니스 로직, 데이터 접근의 책임을 명확히 구분했습니다.
+- Service 계층에 `@Transactional`을 적용하여
+  데이터 변경 작업의 원자성과 일관성을 보장했습니다.
+- Todo 엔티티 내부에 상태 변경 메서드를 두어,
+  완료/미완료 처리 규칙을 도메인 객체가 직접 관리하도록 설계했습니다.
+
+---
+
+## 10. Notes
 
 본 프로젝트는 학습 목적으로 진행되었습니다.
 
@@ -131,7 +146,7 @@ JDK: Java 17
 
 ---
 
-## 10. Future Improvements
+## 11. Future Improvements
 
 - 프론트엔드 UI 구현
 - REST API 테스트 코드 작성
@@ -141,6 +156,6 @@ JDK: Java 17
 
 ---
 
-## 11. Author
+## 12. Author
 
 GitHub: https://github.com/sjdevlog
