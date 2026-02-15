@@ -20,7 +20,7 @@ Spring Boot의 자동 설정(Auto Configuration)과
 ## 2. Tech Stack
 
 ### Backend
-- **Java 17**
+- **Java 21 (LTS)**
 - **Spring Boot**
 - **Spring Web**
 - **Spring Data JPA**
@@ -149,6 +149,7 @@ POST `/api/todos`
 
 ### 1) 프로젝트 실행
 
+#### Maven Wrapper 사용 (권장)
 ```bash
 ./mvnw spring-boot:run
 ```
@@ -164,7 +165,7 @@ http://localhost:8081
 
 IDE: IntelliJ IDEA
 Build Tool: Maven
-JDK: Java 21
+JDK: Java 21 (LTS)
 
 ---
 
