@@ -9,7 +9,7 @@ Controller–Service–Repository 계층 구조 및 JPA 기반 데이터베이�
 ## 1. Project Overview
 
 이 프로젝트는 백엔드 중심의 Todo 관리 애플리케이션으로,  
-할 일(Todo)을 생성·조회·수정·삭제하는 기본적인 기능을 구현하는 것을 목표로 합니다.
+할 일(Todo)의 생성·조회·상태 변경·삭제 기능을 구현하는 것을 목표로 합니다.
 
 Spring Boot의 자동 설정(Auto Configuration)과  
 계층형 아키텍처(Layered Architecture)를 직접 적용해 보며,  
@@ -39,14 +39,16 @@ Spring Boot의 자동 설정(Auto Configuration)과
 본 프로젝트는 Spring Boot의 권장 구조를 따르며,  
 각 레이어의 역할을 명확히 분리하여 구성했습니다.
 
+```
 src/main/java/com/sjdevlog/todolist
-- controller
-- service
-- repository
-- main
-- dto
-- TodolistApplication.java
-
+├ controller
+├ service
+├ repository
+├ domain
+├ dto
+├ exception
+└ TodolistApplication.java
+```
 
 ### 각 패키지 역할
 - **controller**  
@@ -68,30 +70,74 @@ src/main/java/com/sjdevlog/todolist
   API 요청(Request)과 응답(Response)에 사용되는 객체로,  
   Entity를 직접 노출하지 않기 위해 사용합니다.
 
+- **exception**
+
+  애플리케이션 전반에서 사용되는 커스텀 예외와
+  전역 예외 처리 로직(@ControllerAdvice)이 위치합니다.
+  일관된 에러 응답 포맷을 제공하기 위해 사용됩니다.
+
 ---
 
 ## 4. Features
 
-### Current / Planned Features
 - Todo 생성
 - Todo 목록 조회
 - Todo 완료 / 미완료 상태 변경
 - Todo 삭제
+- 입력값 검증 및 예외 처리
 
 ---
 
-## 5. API Design (Planned)
+## 5. API Example
+
+### Todo 생성
+POST `/api/todos`
+
+``` json
+{
+  "title": "첫 할일",
+  "description": "Spring Boot Todo API"
+}
+```
+
+성공 응답
+``` json
+{
+  "id": 1,
+  "title": "첫 할일",
+  "description": "Spring Boot Todo API",
+  "completed": false,
+  "createdAt": "2026-02-15T19:14:52",
+  "updatedAt": "2026-02-15T19:14:52",
+  "completedAt": null
+}
+``` 
+
+에러 응답 예시
+``` json
+{
+  "code": "VALIDATION_ERROR",
+  "message": "title은 비어 있을 수 없습니다.",
+  "status": 400,
+  "path": "/api/todos",
+  "timestamp": "2026-02-15T19:20:01"
+}
+```
+
+---
+
+## 6. API Design (Planned)
 
 | Method | Endpoint | Description |
 |------|---------|------------|
 | POST | /api/todos | Todo 생성 |
 | GET | /api/todos | Todo 목록 조회 |
-| PATCH | /api/todos/{id} | Todo 상태 변경 |
+| PATCH | /api/todos/{id} | Todo 완료/미완료 상태 토글 |
 | DELETE | /api/todos/{id} | Todo 삭제 |
 
 ---
 
-## 6. Database
+## .7 Database
 
 - 개발 및 테스트 단계에서는 **H2 In-Memory Database**를 사용합니다.
 - 별도의 설치 없이 빠르게 테스트가 가능하도록 구성했습니다.
@@ -99,20 +145,22 @@ src/main/java/com/sjdevlog/todolist
 
 ---
 
-## 7. Getting Started
+## 8. Getting Started
 
 ### 1) 프로젝트 실행
-bash
+
+```bash
 ./mvnw spring-boot:run
+```
 또는 IntelliJ에서
 TodolistApplication.java 파일 실행
 
 ### 2) 접속 주소
-http://localhost:8080
+http://localhost:8081
 
 ---
 
-## 8. Development Environment
+## 9. Development Environment
 
 IDE: IntelliJ IDEA
 Build Tool: Maven
@@ -120,33 +168,41 @@ JDK: Java 17
 
 ---
 
-## 9. Technical Notes
+## 10. Technical Notes
 
-- Jackson 기본 직렬화 옵션으로 인해 JSON 필드 순서가 알파벳 기준으로 정렬되는 문제를 확인했고,
-  전역 설정과 `@JsonPropertyOrder`를 통해 API 응답 필드 순서를 명시적으로 제어했습니다.
-- API 응답 시 Entity를 직접 노출하지 않고 DTO를 사용하여,
-  데이터베이스 모델과 외부 API 스펙을 분리했습니다.
 - Controller, Service, Repository 계층을 분리하여
   요청 처리, 비즈니스 로직, 데이터 접근의 책임을 명확히 구분했습니다.
+
+- API 응답 시 Entity를 직접 노출하지 않고 DTO를 사용하여,
+  데이터베이스 모델과 외부 API 스펙을 분리했습니다.
+
 - Service 계층에 `@Transactional`을 적용하여
   데이터 변경 작업의 원자성과 일관성을 보장했습니다.
+
 - Todo 엔티티 내부에 상태 변경 메서드를 두어,
   완료/미완료 처리 규칙을 도메인 객체가 직접 관리하도록 설계했습니다.
 
----
+- Jackson 기본 직렬화 옵션으로 인해 JSON 필드 순서가 알파벳 기준으로 정렬되는 문제를 확인했고,
+  전역 설정과 `@JsonPropertyOrder`를 통해 API 응답 필드 순서를 명시적으로 제어했습니다.
 
-## 10. Notes
+- `@ControllerAdvice`를 활용해 예외 처리를 전역으로 통합하고,
+  일관된 에러 응답 포맷을 제공하도록 구현했습니다.
 
-본 프로젝트는 학습 목적으로 진행되었습니다.
-
-초기 단계에서는 백엔드 로직 구현에 집중하며,
-프론트엔드는 추후 단계적으로 추가할 예정입니다.
-
-코드의 가독성과 구조적 이해를 최우선으로 고려했습니다.
+- `@Valid` 기반 입력값 검증을 적용하여
+  잘못된 요청을 Controller 단계에서 차단하도록 구성했습니다.
 
 ---
 
-## 11. Future Improvements
+## 11. Notes
+
+본 프로젝트는 학습 목적으로 진행된 개인 프로젝트입니다.
+
+백엔드 로직 구현과 계층형 구조 이해에 집중했으며,  
+프론트엔드는 추후 단계적으로 확장할 예정입니다.
+
+---
+
+## 12. Future Improvements
 
 - 프론트엔드 UI 구현
 - REST API 테스트 코드 작성
@@ -156,6 +212,6 @@ JDK: Java 17
 
 ---
 
-## 12. Author
+## 13. Author
 
 GitHub: https://github.com/sjdevlog
