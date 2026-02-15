@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>새 할일</title>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+    <h2>새 할일</h2>
+
+    <input id="title" placeholder="제목">
+    <textarea id="description" placeholder="설명"></textarea>
+
+    <button onclick="saveTodo()">저장</button>
+    <button onclick="history.back()">취소</button>
+
+    <script src="/js/app.js"></script>
+    <script>
+        function saveTodo() {
+            fetch("/api/todos", {
+                method: "POST",
+                headers: { "Contest-Type": "application/json"},
+                body: JSON.stringify({
+                    title: document.getElementById("title").value,
+                    description: document.getElementById("description").value
+                })
+            }).then(() => location.href = "index.html");
+        }
+    </script>
+</body>
+</html>

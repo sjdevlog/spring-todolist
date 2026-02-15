@@ -1,0 +1,14 @@
+body {
+  font-family: Arial, sans-serif;
+  max-width: 600px;
+  margin: auto;
+}
+
+li {
+  margin: 8px 0;
+}
+
+.done {
+  text-decoration: line-through;
+  color: gray;
+}
