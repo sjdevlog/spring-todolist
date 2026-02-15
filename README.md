@@ -164,7 +164,7 @@ http://localhost:8081
 
 IDE: IntelliJ IDEA
 Build Tool: Maven
-JDK: Java 17
+JDK: Java 21
 
 ---
 
