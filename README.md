@@ -137,7 +137,7 @@ POST `/api/todos`
 
 ---
 
-## .7 Database
+## 7. Database
 
 - 개발 및 테스트 단계에서는 **H2 In-Memory Database**를 사용합니다.
 - 별도의 설치 없이 빠르게 테스트가 가능하도록 구성했습니다.
