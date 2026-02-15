@@ -15,6 +15,10 @@ Spring Boot의 자동 설정(Auto Configuration)과
 계층형 아키텍처(Layered Architecture)를 직접 적용해 보며,  
 유지보수성과 확장성을 고려한 코드 구조를 연습하는 데 중점을 두었습니다.
 
+백엔드 REST API와 HTML/CSS/JavaScript 기반 프론트엔드를 직접 연동하여
+전체 요청–응답 흐름을 경험하는 것을 목표로 했습니다.
+
+
 ---
 
 ## 2. Tech Stack
@@ -27,10 +31,10 @@ Spring Boot의 자동 설정(Auto Configuration)과
 - **H2 Database**
 - **Maven**
 
-### Frontend (Planned)
+### Frontend
 - HTML
 - CSS
-- JavaScript
+- JavaScript (Fetch API)
 
 ---
 
@@ -80,11 +84,13 @@ src/main/java/com/sjdevlog/todolist
 
 ## 4. Features
 
-- Todo 생성
+- Todo 생성 (웹 UI)
 - Todo 목록 조회
 - Todo 완료 / 미완료 상태 변경
 - Todo 삭제
-- 입력값 검증 및 예외 처리
+- Todo 수정 (웹 UI)
+- 입력값 검증 및 전역 예외 처리
+
 
 ---
 
@@ -199,8 +205,9 @@ JDK: Java 21 (LTS)
 
 본 프로젝트는 학습 목적으로 진행된 개인 프로젝트입니다.
 
-백엔드 로직 구현과 계층형 구조 이해에 집중했으며,  
-프론트엔드는 추후 단계적으로 확장할 예정입니다.
+백엔드 REST API 구현과 계층형 구조 설계에 집중했으며,
+HTML/CSS/JavaScript 기반 프론트엔드를 직접 연동하여
+전체 웹 애플리케이션 흐름을 구현했습니다.
 
 ---
 
