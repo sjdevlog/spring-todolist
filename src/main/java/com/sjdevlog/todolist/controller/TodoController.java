@@ -15,7 +15,7 @@ public class TodoController {
     private final TodoService todoService;
 
     public TodoController(TodoService todoService) {
-        this.todoService = TodoService;
+        this.todoService = todoService;
     }
 
     //생성
