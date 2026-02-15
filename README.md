@@ -132,7 +132,7 @@ POST `/api/todos`
 |------|---------|------------|
 | POST | /api/todos | Todo 생성 |
 | GET | /api/todos | Todo 목록 조회 |
-| PATCH | /api/todos/{id} | Todo 완료/미완료 상태 토글 |
+| PATCH | /api/todos/{id}/toggle | Todo 완료/미완료 상태 토글 |
 | DELETE | /api/todos/{id} | Todo 삭제 |
 
 ---
@@ -183,7 +183,8 @@ JDK: Java 17
   완료/미완료 처리 규칙을 도메인 객체가 직접 관리하도록 설계했습니다.
 
 - Jackson 기본 직렬화 옵션으로 인해 JSON 필드 순서가 알파벳 기준으로 정렬되는 문제를 확인했고,
-  전역 설정과 `@JsonPropertyOrder`를 통해 API 응답 필드 순서를 명시적으로 제어했습니다.
+  application.properties의 전역 설정을 통해 필드 정렬을 비활성화하여
+  응답 구조의 가독성을 개선했습니다.
 
 - `@ControllerAdvice`를 활용해 예외 처리를 전역으로 통합하고,
   일관된 에러 응답 포맷을 제공하도록 구현했습니다.
