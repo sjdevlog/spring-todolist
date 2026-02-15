@@ -85,9 +85,9 @@ src/main/java/com/sjdevlog/todolist
 
 - Todo 생성 (웹 UI)
 - Todo 목록 조회
-- Todo 완료 / 미완료 상태 변경
+- Todo 완료 / 미완료 상태 토글
 - Todo 삭제
-- Todo 수정 및 구현
+- Todo 단건 조회 및 수정 (웹 UI)
 - 입력값 검증 및 전역 예외 처리
 
 ---
@@ -130,12 +130,14 @@ POST `/api/todos`
 
 ---
 
-## 6. API Design (Planned)
+## 6. Implemented API
 
 | Method | Endpoint | Description |
 |------|---------|------------|
 | POST | /api/todos | Todo 생성 |
 | GET | /api/todos | Todo 목록 조회 |
+| GET | /api/todos/{id} | Todo 단건 조회 |
+| PUT | /api/todos/{id} | Todo 수정 |
 | PATCH | /api/todos/{id}/toggle | Todo 완료/미완료 상태 토글 |
 | DELETE | /api/todos/{id} | Todo 삭제 |
 
@@ -215,11 +217,11 @@ API 예시는 구조 설명을 위한 예시이며,
 ## 12. Future Improvements
 
 - REST API 테스트 코드 작성
-- Todo 수정 API 추가
 - 데이터베이스 MySQL 전환
 - 사용자 인증 및 권한 관리 기능 추가
 - 예외 처리 및 로깅 구조 개선
 - UI/UX 개선
+
 
 ---
 
