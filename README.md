@@ -1,19 +1,22 @@
 # Todo List Web Application
 
 Spring Boot 기반의 **Todo List 웹 애플리케이션**입니다.  
-이 프로젝트는 Spring Boot의 기본 구조와 웹 애플리케이션 개발 흐름을 이해하고,  
-Controller–Service–Repository 계층 구조 및 JPA 기반 데이터베이스 연동을 학습하기 위해 진행한 개인 프로젝트입니다.
+본 프로젝트는 백엔드 REST API 설계 및 구현부터
+HTML/CSS/JavaScript 기반 프론트엔드 연동까지 전 과정을 직접 경험하기 위해 진행한 개인 프로젝트입니다.
 
+Controller–Service–Repository 계층 구조와 JPA를 활용한 데이터베이스 연동,
+정적 프론트엔드와의 API 통신을 통해 웹 애플리케이션의 전체 흐름을 구현하는 데 중점을 두었습니다.
 ---
 
 ## 1. Project Overview
 
-이 프로젝트는 백엔드 중심의 Todo 관리 애플리케이션으로,  
-할 일(Todo)의 생성·조회·상태 변경·삭제 기능을 구현하는 것을 목표로 합니다.
+이 프로젝트는 할 일(Todo)의 생성, 조회, 상태 변경, 삭제 기능을 제공하는
+웹 기반 Todo 관리 애플리케이션입니다.
 
-Spring Boot의 자동 설정(Auto Configuration)과  
-계층형 아키텍처(Layered Architecture)를 직접 적용해 보며,  
-유지보수성과 확장성을 고려한 코드 구조를 연습하는 데 중점을 두었습니다.
+Spring Boot의 자동 설정(Auto Configuration)을 활용하여
+REST API를 설계·구현하고,
+HTML/CSS/JavaScript(fetch API)를 사용해 프론트엔드와 직접 연동함으로써
+요청–응답 기반의 웹 애플리케이션 구조를 이해하는 것을 목표로 했습니다.
 
 ---
 
@@ -27,16 +30,16 @@ Spring Boot의 자동 설정(Auto Configuration)과
 - **H2 Database**
 - **Maven**
 
-### Frontend (Planned)
+### Frontend
 - HTML
 - CSS
-- JavaScript
+- JavaScript (Fetch API)
 
 ---
 
 ## 3. Project Structure
 
-본 프로젝트는 Spring Boot의 권장 구조를 따르며,  
+본 프로젝트는 Spring Boot의 권장 패키지 구조를 따르며,  
 각 레이어의 역할을 명확히 분리하여 구성했습니다.
 
 ```
@@ -80,11 +83,12 @@ src/main/java/com/sjdevlog/todolist
 
 ## 4. Features
 
-- Todo 생성
+- Todo 생성 (웹 UI)
 - Todo 목록 조회
 - Todo 완료 / 미완료 상태 변경
 - Todo 삭제
-- 입력값 검증 및 예외 처리
+- Todo 수정 및 구현
+- 입력값 검증 및 전역 예외 처리
 
 ---
 
@@ -148,8 +152,6 @@ POST `/api/todos`
 ## 8. Getting Started
 
 ### 1) 프로젝트 실행
-
-#### Maven Wrapper 사용 (권장)
 ```bash
 ./mvnw spring-boot:run
 ```
@@ -157,7 +159,9 @@ POST `/api/todos`
 TodolistApplication.java 파일 실행
 
 ### 2) 접속 주소
-http://localhost:8081
+Web UI: http://localhost:8081/index.html
+
+API Base URL: http://localhost:8081/api/todos
 
 ---
 
@@ -199,18 +203,23 @@ JDK: Java 21 (LTS)
 
 본 프로젝트는 학습 목적으로 진행된 개인 프로젝트입니다.
 
-백엔드 로직 구현과 계층형 구조 이해에 집중했으며,  
-프론트엔드는 추후 단계적으로 확장할 예정입니다.
+백엔드 REST API 구현과 계층형 구조 설계에 집중했으며,
+HTML/CSS/JavaScript 기반 프론트엔드를 직접 연동하여
+전체 웹 애플리케이션 흐름을 구현했습니다.
+
+API 예시는 구조 설명을 위한 예시이며,
+실제 동작과 세부 스펙은 소스 코드 기준을 따릅니다.
 
 ---
 
 ## 12. Future Improvements
 
-- 프론트엔드 UI 구현
 - REST API 테스트 코드 작성
+- Todo 수정 API 추가
 - 데이터베이스 MySQL 전환
 - 사용자 인증 및 권한 관리 기능 추가
 - 예외 처리 및 로깅 구조 개선
+- UI/UX 개선
 
 ---
 
