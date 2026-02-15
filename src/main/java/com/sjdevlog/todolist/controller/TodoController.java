@@ -6,6 +6,7 @@ import com.sjdevlog.todolist.dto.TodoResponse;
 import com.sjdevlog.todolist.service.TodoService;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
+import jakarta.validation.Valid;
 
 import java.util.List;
 
@@ -21,7 +22,7 @@ public class TodoController {
     //생성
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public TodoResponse create(@RequestBody TodoCreateRequest request) {
+    public TodoResponse create(@Valid @RequestBody TodoCreateRequest request) {
         Todo todo = todoService.create(request.getTitle(), request.getDescription());
         return new TodoResponse(todo);
     }

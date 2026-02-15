@@ -1,5 +1,6 @@
 package com.sjdevlog.todolist.dto;
 
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.sjdevlog.todolist.domain.Todo;
 import java.time.LocalDateTime;
 
@@ -12,6 +13,15 @@ public class TodoResponse {
     private LocalDateTime updatedAt;
     private LocalDateTime completedAt;
 
+    @JsonPropertyOrder({
+            "id",
+            "title",
+            "description",
+            "completed",
+            "createdAt",
+            "updatedAt",
+            "completedAt"
+    })
     public TodoResponse(Todo todo) {
         this.id = todo.getId();
         this.title = todo.getTitle();

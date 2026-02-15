@@ -2,6 +2,7 @@ package com.sjdevlog.todolist.service;
 
 import com.sjdevlog.todolist.domain.Todo;
 import com.sjdevlog.todolist.repository.TodoRepository;
+import com.sjdevlog.todolist.exception.TodoNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -29,20 +30,17 @@ public class TodoService {
     }
 
     public Todo toggleCompleted(Long id) {
-        Todo todo = todoRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("존재하지 않는 todo id: " + id));
+        Todo todo = todoRepository.findById(id).orElseThrow(() -> new TodoNotFoundException(id));
 
-        if (todo.isCompleted()) {
-            todo.markIncomplete();
-        } else {
-            todo.markCompleted();
-        }
+        if (todo.isCompleted()) todo.markIncomplete();
+        else todo.markCompleted();;
 
         return todo;
     }
 
     public void delete(Long id) {
         if (!todoRepository.existsById(id)) {
-            throw new IllegalArgumentException("존재하지 않는 todo id : " + id);
+            throw new TodoNotFoundException(id);
         }
         todoRepository.deleteById(id);
     }
