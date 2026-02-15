@@ -1,12 +1,11 @@
 # Todo List Web Application
 
----
-
 Spring Boot 기반의 **Todo List 웹 애플리케이션**입니다.  
-본 프로젝트는 백엔드 REST API 설계 및 구현부터
-HTML/CSS/JavaScript 기반 프론트엔드 연동까지 전 과정을 직접 경험하기 위해 진행한 개인 프로젝트입니다.
-Controller–Service–Repository 계층 구조와 JPA를 활용한 데이터베이스 연동,
+본 프로젝트는 백엔드 REST API 설계 및 구현부터  
+HTML/CSS/JavaScript 기반 프론트엔드 연동까지 전 과정을 직접 경험하기 위해 진행한 개인 프로젝트입니다.  
+Controller–Service–Repository 계층 구조와 JPA를 활용한 데이터베이스 연동,  
 정적 프론트엔드와의 API 통신을 통해 웹 애플리케이션의 전체 흐름을 구현하는 데 중점을 두었습니다.
+
 ---
 
 ## 1. Project Overview
