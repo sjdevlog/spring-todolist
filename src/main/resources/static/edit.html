@@ -12,7 +12,7 @@
     <textarea id="description"></textarea>
 
     <button onclick="updateTodo()">수정</button>
-    <button onclick="history.back()>">취소</button>
+    <button onclick="history.back()">취소</button>
 
     <script src="/js/app.js"></script>
     <script>
@@ -26,15 +26,15 @@
             });
         
         function updateTodo() {
-      fetch(`/api/todos/${id}`, {
-        method: "PUT",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          title: document.getElementById("title").value,
-          description: document.getElementById("description").value
-        })
-      }).then(() => location.href = "index.html");
-    }
+            fetch(`/api/todos/${id}`, {
+                method: "PUT",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({
+                    title: document.getElementById("title").value,
+                    description: document.getElementById("description").value
+                })
+            }).then(() => location.href = "index.html");
+        }
     </script>
 </body>
 </body>

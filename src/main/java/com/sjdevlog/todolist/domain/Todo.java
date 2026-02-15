@@ -46,6 +46,7 @@ public class Todo {
     public void update(String title, String description) {
         this.title = title;
         this.description = description;
+        this.updatedAt = java.time.LocalDateTime.now();
     }
 
     public Long getId() { return id; }

@@ -76,6 +76,7 @@
 				<configuration>
 					<annotationProcessorPaths>
 						<path>
+							<release>21</release>
 							<groupId>org.projectlombok</groupId>
 							<artifactId>lombok</artifactId>
 						</path>

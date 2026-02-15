@@ -29,6 +29,19 @@ public class TodoService {
         return todoRepository.findAll();
     }
 
+    @Transactional(readOnly = true)
+    public Todo getById(Long id) {
+        return todoRepository.findById(id)
+                .orElseThrow(() -> new TodoNotFoundException(id));
+    }
+
+    @Transactional
+    public Todo update(Long id, String title, String description) {
+        Todo todo = getById(id);
+        todo.update(title, description);   // 아래 Domain 메서드 추가 필요
+        return todo;
+    }
+
     public Todo toggleCompleted(Long id) {
         Todo todo = todoRepository.findById(id).orElseThrow(() -> new TodoNotFoundException(id));
 
