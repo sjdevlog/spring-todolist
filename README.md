@@ -1,11 +1,11 @@
 # Todo List Web Application
 
 Spring Boot 기반의 **Todo List 웹 애플리케이션**입니다.  
-본 프로젝트는 백엔드 REST API 설계 및 구현부터
-HTML/CSS/JavaScript 기반 프론트엔드 연동까지 전 과정을 직접 경험하기 위해 진행한 개인 프로젝트입니다.
-
-Controller–Service–Repository 계층 구조와 JPA를 활용한 데이터베이스 연동,
+본 프로젝트는 백엔드 REST API 설계 및 구현부터  
+HTML/CSS/JavaScript 기반 프론트엔드 연동까지 전 과정을 직접 경험하기 위해 진행한 개인 프로젝트입니다.  
+Controller–Service–Repository 계층 구조와 JPA를 활용한 데이터베이스 연동,  
 정적 프론트엔드와의 API 통신을 통해 웹 애플리케이션의 전체 흐름을 구현하는 데 중점을 두었습니다.
+
 ---
 
 ## 1. Project Overview
@@ -85,9 +85,9 @@ src/main/java/com/sjdevlog/todolist
 
 - Todo 생성 (웹 UI)
 - Todo 목록 조회
-- Todo 완료 / 미완료 상태 변경
+- Todo 완료 / 미완료 상태 토글
 - Todo 삭제
-- Todo 수정 및 구현
+- Todo 단건 조회 및 수정 (웹 UI)
 - 입력값 검증 및 전역 예외 처리
 
 ---
@@ -130,12 +130,14 @@ POST `/api/todos`
 
 ---
 
-## 6. API Design (Planned)
+## 6. Implemented API
 
 | Method | Endpoint | Description |
 |------|---------|------------|
 | POST | /api/todos | Todo 생성 |
 | GET | /api/todos | Todo 목록 조회 |
+| GET | /api/todos/{id} | Todo 단건 조회 |
+| PUT | /api/todos/{id} | Todo 수정 |
 | PATCH | /api/todos/{id}/toggle | Todo 완료/미완료 상태 토글 |
 | DELETE | /api/todos/{id} | Todo 삭제 |
 
@@ -215,11 +217,11 @@ API 예시는 구조 설명을 위한 예시이며,
 ## 12. Future Improvements
 
 - REST API 테스트 코드 작성
-- Todo 수정 API 추가
 - 데이터베이스 MySQL 전환
 - 사용자 인증 및 권한 관리 기능 추가
 - 예외 처리 및 로깅 구조 개선
 - UI/UX 개선
+
 
 ---
 
