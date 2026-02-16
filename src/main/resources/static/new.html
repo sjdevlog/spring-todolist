@@ -6,13 +6,15 @@
     <link rel="stylesheet" href="/css/styles.css">
 </head>
 <body>
-    <h2>새 할일</h2>
+    <div class="container">
+        <h2>새 할일</h2>
 
-    <input id="title" placeholder="제목">
-    <textarea id="description" placeholder="설명"></textarea>
+        <input id="title" placeholder="제목">
+        <textarea id="description" placeholder="설명"></textarea>
 
-    <button onclick="saveTodo()">저장</button>
-    <button onclick="history.back()">취소</button>
+        <button onclick="saveTodo()">저장</button>
+        <button class="secondary" onclick="history.back()">취소</button>
+    </div>
 
     <script src="/js/app.js"></script>
     <script>
@@ -38,6 +40,5 @@
             location.href = "index.html";
         }
     </script>
-
 </body>
 </html>
