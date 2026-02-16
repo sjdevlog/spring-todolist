@@ -135,17 +135,17 @@ POST `/api/todos`
 ### Todo List (Main)
 > 전체 할 일 목록을 확인하고 완료/수정/삭제할 수 있는 메인 화면
 
-![Todo List Main](<img width="717" height="356" alt="image" src="https://github.com/user-attachments/assets/03cba0ff-0696-4acb-a81f-c59046db0fd0" />)
+![Todo List Main](./screenshots/todo-list.png)
 
 ### Create Todo
 > 새로운 할 일을 추가하는 화면
 
-![Create Todo](<img width="695" height="393" alt="image" src="https://github.com/user-attachments/assets/e2bd8604-5fcb-45d4-89dd-dfe7a7959aab" />)
+![Create Todo](./screenshots/todo-create.png)
 
 ### Edit Todo
 > 기존 할 일을 수정하는 화면
 
-![Edit Todo](<img width="700" height="379" alt="image" src="https://github.com/user-attachments/assets/c6d47e1f-1f8e-45c6-8fd1-c847d2755b0e" />)
+![Edit Todo](./screenshots/todo-edit.png)
 
 ---
 
