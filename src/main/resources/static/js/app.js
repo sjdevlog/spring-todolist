@@ -42,6 +42,11 @@ async function loadTodos() {
       return;
     }
 
+    const completedCount = todos.filter(t => t.completed).length;
+    const statsEl = document.getElementById("todo-stats");
+    if (statsEl) statsEl.textContent = `${completedCount} / ${todos.length} 완료`;
+
+
     todos.forEach((todo) => {
       const li = document.createElement("li");
 
@@ -116,4 +121,24 @@ function goEdit(id) {
 }
 
 /** ====== index.html에서만 자동 실행 ====== */
-document.addEventListener("DOMContentLoaded", loadTodos);
+document.addEventListener("DOMContentLoaded", () => {
+  loadTodos();
+
+  const toggleBtn = document.getElementById("theme-toggle");
+  if (!toggleBtn) return;
+
+  // 초기 테마 적용
+  const saved = localStorage.getItem("theme");
+  if (saved === "dark") {
+    document.body.classList.add("dark");
+    toggleBtn.textContent = "라이트모드";
+  }
+
+  // 토글
+  toggleBtn.addEventListener("click", () => {
+    const isDark = document.body.classList.toggle("dark");
+    localStorage.setItem("theme", isDark ? "dark" : "light");
+    toggleBtn.textContent = isDark ? "라이트모드" : "다크모드";
+  });
+});
+

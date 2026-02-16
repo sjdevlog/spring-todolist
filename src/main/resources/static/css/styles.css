@@ -101,3 +101,55 @@ input, textarea {
   font-size: 13px;
   color: #9ca3af;
 }
+
+.topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 14px;
+}
+
+.stats {
+  font-size: 13px;
+  color: #6b7280;
+}
+
+/* 다크모드 */
+body.dark {
+  background: #111827;
+  color: #e5e7eb;
+}
+
+body.dark .container {
+  background: #1f2937;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.35);
+}
+
+body.dark li {
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+
+body.dark input,
+body.dark textarea {
+  background: #111827;
+  color: #e5e7eb;
+  border: 1px solid rgba(255,255,255,0.15);
+}
+
+body.dark .secondary {
+  background: rgba(255,255,255,0.10);
+  color: #e5e7eb;
+}
+
+body.dark .secondary:hover {
+  background: rgba(255,255,255,0.16);
+}
+
+body.dark .hint,
+body.dark .stats {
+  color: rgba(229,231,235,0.7);
+}
+
+body.dark .done {
+  color: rgba(229,231,235,0.45);
+}
