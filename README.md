@@ -88,6 +88,7 @@ src/main/java/com/sjdevlog/todolist
 - Todo 완료 / 미완료 상태 토글
 - Todo 삭제
 - Todo 단건 조회 및 수정 (웹 UI)
+- 빈 상태(Empty State) UX 처리
 - 입력값 검증 및 전역 예외 처리
 
 ---
@@ -127,6 +128,24 @@ POST `/api/todos`
   "timestamp": "2026-02-15T19:20:01"
 }
 ```
+---
+
+## Screenshots
+
+### Todo List (Main)
+> 전체 할 일 목록을 확인하고 완료/수정/삭제할 수 있는 메인 화면
+
+![Todo List Main](<img width="717" height="356" alt="image" src="https://github.com/user-attachments/assets/03cba0ff-0696-4acb-a81f-c59046db0fd0" />)
+
+### Create Todo
+> 새로운 할 일을 추가하는 화면
+
+![Create Todo](<img width="695" height="393" alt="image" src="https://github.com/user-attachments/assets/e2bd8604-5fcb-45d4-89dd-dfe7a7959aab" />)
+
+### Edit Todo
+> 기존 할 일을 수정하는 화면
+
+![Edit Todo](<img width="700" height="379" alt="image" src="https://github.com/user-attachments/assets/c6d47e1f-1f8e-45c6-8fd1-c847d2755b0e" />)
 
 ---
 
@@ -198,6 +217,9 @@ JDK: Java 21 (LTS)
 
 - `@Valid` 기반 입력값 검증을 적용하여
   잘못된 요청을 Controller 단계에서 차단하도록 구성했습니다.
+
+- UI Empty State 처리로 사용자 경험 개선
+
 
 ---
 
